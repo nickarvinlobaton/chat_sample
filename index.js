@@ -5,7 +5,7 @@ const bodyParser = require("body-parser");
 
 const app = express();
 
-const PORT = process.env.PORT || 5000;
+const PORT = 5000;
 
 // Load View Engine
 app.set("views", path.join(__dirname, "views"));

@@ -6,6 +6,17 @@ const bucketName = "intake_sample";
 const bucket = cluster.bucket(bucketName);
 const collection = bucket.defaultCollection();
 
+const getAllPatients = async () => {
+  let qs = `SELECT * FROM \`${bucketName}\``;
+
+  try {
+    let result = await cluster.query(qs);
+    return result;
+  } catch (e) {
+    return e;
+  }
+};
+
 const addPatient = async (doc) => {
   const key = `patient_${doc.id}`;
 
@@ -23,4 +34,5 @@ const addPatient = async (doc) => {
 
 module.exports = {
   addPatient,
+  getAllPatients,
 };
